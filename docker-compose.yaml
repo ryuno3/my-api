@@ -21,11 +21,16 @@ services:
     depends_on:
       - postgres
     ports:
-      - '3000:3000'
+      - '3001:3001'
     volumes:
       - .:/app
       - /app/node_modules
     command: npm run start:dev
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
 
 volumes:
   postgres-data:
